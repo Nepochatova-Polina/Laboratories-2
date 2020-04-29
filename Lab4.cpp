@@ -19,11 +19,14 @@ char diff(char left_element, char right_element, char op);
 char Show(tree *node);
 
 void InfixTask(tree *node);
-
+char variable;
 int main() {
     string task;
+
     cout << "Enter your task in Postfix form:" << endl;
     getline(cin, task);
+    cout << "Enter variable";
+    cin >> variable;
     tree *r = StackFunk(task);
     InfixTask(r);
     char x = Show(r);
@@ -90,25 +93,25 @@ char diff(char left_element, char right_element, char op) {
 
     switch (op) {
         case '+':
-            if (left_element != 'x' && right_element == 'x' || right_element != 'x' && left_element == 'x') {
+            if (left_element != variable && right_element == variable || right_element != variable && left_element == variable) {
                 left_element = 1;
-            } else if (left_element != 'x' && right_element != 'x') {
+            } else if (left_element != variable && right_element != variable) {
                 left_element = 0;
             }
             break;
         case '-':
-            if (left_element != 'x' && right_element == 'x' || right_element != 'x' && left_element == 'x') {
+            if (left_element != variable && right_element == variable || right_element != variable && left_element == variable) {
                 left_element = 1;
-            } else if (left_element != 'x' && right_element != 'x') {
+            } else if (left_element != variable && right_element != variable) {
                 left_element = 0;
             }
             break;
         case '*':
-            if (left_element != 'x' && right_element == 'x') {
+            if (left_element != variable && right_element == variable) {
 
-            } else if (right_element != 'x' && left_element == 'x') {
+            } else if (right_element != variable && left_element == variable) {
                 left_element = right_element;
-            } else if (left_element != 'x' && right_element != 'x') {
+            } else if (left_element != variable && right_element != variable) {
                 left_element = 0;
             }
             break;
